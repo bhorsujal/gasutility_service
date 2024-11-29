@@ -56,6 +56,3 @@ A Django-based web application for managing gas service requests with role-based
    * Update request status
    * Review attachments
 4. **Logout**: Use logout button in navigation bar
-
-## Note
-This project is strictly for the backend django intern assignment purpose.
