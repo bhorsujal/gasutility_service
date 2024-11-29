@@ -7,6 +7,7 @@ A Django-based web application for managing gas service requests with role-based
 * **MULTIPLE File attachments support**
 * Role-based dashboard and navigation
 * Secure authentication
+* Basic HTML pages for ease of usage
 
 ## Installation
 1. Clone the repository
