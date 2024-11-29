@@ -62,7 +62,7 @@ WSGI_APPLICATION = 'gasutility_service.wsgi.application'
 AUTH_USER_MODEL = 'accounts.User'
 
 LOGIN_URL = 'accounts:login'
-LOGIN_REDIRECT_URL = 'service_requests:request_list' # after login
+LOGIN_REDIRECT_URL = 'support:request_list' # after login
 LOGOUT_REDIRECT_URL = 'accounts:login' # after logout
 
 # Database
