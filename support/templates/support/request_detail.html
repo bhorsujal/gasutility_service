@@ -1,0 +1,38 @@
+{% extends 'support/support_base.html' %}
+{% block title %}Service Request Detail{% endblock %}
+{% block content %}
+<h2>Request #{{ object.id }}</h2>
+<p><strong>Customer:</strong> {{ object.customer.username }}</p>
+<p><strong>Type:</strong> {{ object.service_type }}</p>
+<p><strong>Status:</strong> {{ object.get_status_display }}</p>
+<p><strong>Description:</strong> {{ object.description }}</p>
+<p><strong>Submitted At:</strong> {{ object.created_at|date:"Y-m-d H:i" }}</p>
+{% if object.resolved_at %}
+<p><strong>Resolved At:</strong> {{ object.resolved_at|date:"Y-m-d H:i" }}</p>
+{% endif %}
+
+<h3>Attachments:</h3>
+<ul>
+    {% for attachment in object.attachments.all %}
+    <li><a href="{{ attachment.file.url }}">{{ attachment.file.name }}</a></li>
+    {% empty %}
+    <li>No attachments.</li>
+    {% endfor %}
+</ul>
+
+<h3>Activity Log:</h3>
+<ul>
+    {% for log in object.activitylog_set.all %}
+    <li>
+        {{ log.timestamp|date:"Y-m-d H:i" }} - {{ log.action }} by {{ log.performed_by.username }}
+    </li>
+    {% empty %}
+    <li>No activity recorded.</li>
+    {% endfor %}
+</ul>
+
+<p>
+    <a href="{% url 'support:request_update' object.id %}">Update Request</a> |
+    <a href="{% url 'support:request_list' %}">Back to Request List</a>
+</p>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Service Request Detail{% endblock %}
+{% block content %}
+<h2>Request #{{ service_request.id }}</h2>
+<p><strong>Type:</strong> {{ service_request.service_type }}</p>
+<p><strong>Status:</strong> {{ service_request.get_status_display }}</p>
+<p><strong>Description:</strong> {{ service_request.description }}</p>
+<p><strong>Submitted At:</strong> {{ service_request.created_at|date:"DATETIME_FORMAT" }}</p>
+{% if service_request.resolved_at %}
+    <p><strong>Resolved At:</strong> {{ service_request.resolved_at|date:"DATETIME_FORMAT" }}</p>
+{% endif %}
+<h3>Attachments:</h3>
+<ul>
+    {% for attachment in service_request.attachments.all %}
+        <li><a href="{{ attachment.file.url }}">{{ attachment.file.name }}</a></li>
+    {% empty %}
+        <li>No attachments.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

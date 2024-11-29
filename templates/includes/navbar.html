@@ -1,0 +1,27 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+
+        {% if user.is_authenticated %}
+            {% if user.role == 'customer' %}
+                <li><a href="{% url 'service_requests:request_create' %}">New Request</a></li>
+            {% endif %}
+
+            {% if user.role == 'support' or user.role == 'admin' %}
+                <li><a href="{% url 'support:dashboard' %}">Support Dashboard</a></li>
+            {% endif %}
+
+            <li>
+                <form method="post" action="{% url 'accounts:logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">
+                        Logout
+                    </button>
+                </form>
+            </li>
+        {% else %}
+            <li><a href="{% url 'accounts:login' %}">Login</a></li>
+            <li><a href="{% url 'accounts:register' %}">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>

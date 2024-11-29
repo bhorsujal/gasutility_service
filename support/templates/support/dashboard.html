@@ -1,0 +1,10 @@
+{% extends 'support/support_base.html' %}
+{% block title %}Support Dashboard{% endblock %}
+{% block content %}
+<h2>Support Dashboard</h2>
+<ul>
+    <li>Total Requests: {{ total_requests }}</li>
+    <li>Open Requests: {{ open_requests }}</li>
+</ul>
+<p><a href="{% url 'support:request_list' %}">View All Service Requests</a></p>
+{% endblock %}

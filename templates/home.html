@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Welcome to Gas Utility Services{% endblock %}
+{% block content %}
+<h1>Welcome to the Gas Utility Service Portal</h1>
+<p>Your one-stop solution for managing gas utility service requests.</p>
+
+{% if user.is_authenticated %}
+    <p><a href="{% url 'service_requests:request_list' %}">View My Requests</a></p>
+{% else %}
+    <p>
+        <a href="{% url 'accounts:login' %}">Login</a> or 
+        <a href="{% url 'accounts:register' %}">Register</a> to get started!
+    </p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}New Service Request{% endblock %}
+{% block content %}
+<h2>Submit a New Service Request</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ attachment_form.as_p }}
+    <button type="submit">Submit Request</button>
+</form>
+{% endblock %}

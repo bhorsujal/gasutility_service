@@ -1,0 +1,36 @@
+{% extends 'support/support_base.html' %}
+{% block title %}Service Requests{% endblock %}
+{% block content %}
+<h2>Service Requests</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Submitted At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in object_list %}
+        <tr>
+            <td>{{ request.id }}</td>
+            <td>{{ request.customer.username }}</td>
+            <td>{{ request.service_type }}</td>
+            <td>{{ request.get_status_display }}</td>
+            <td>{{ request.created_at|date:"Y-m-d H:i" }}</td>
+            <td>
+                <a href="{% url 'support:request_detail' request.id %}">View</a> |
+                <a href="{% url 'support:request_update' request.id %}">Update</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">No service requests found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

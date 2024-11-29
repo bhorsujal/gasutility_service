@@ -1,0 +1,14 @@
+{% extends 'support/support_base.html' %}
+{% block title %}Update Service Request{% endblock %}
+{% block content %}
+<h2>Update Request #{{ object.id }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update Request</button>
+</form>
+<p>
+    <a href="{% url 'support:request_detail' object.id %}">Back to Request Detail</a> |
+    <a href="{% url 'support:request_list' %}">Back to Request List</a>
+</p>
+{% endblock %}
