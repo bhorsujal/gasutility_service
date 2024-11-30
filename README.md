@@ -2,6 +2,9 @@
 
 A Django-based web application for managing gas service requests with role-based access.
 
+## Deployed Link
+https://smpl.pythonanywhere.com/
+
 ## Features
 * Customer service request submission and tracking
 * **MULTIPLE File attachments support**
